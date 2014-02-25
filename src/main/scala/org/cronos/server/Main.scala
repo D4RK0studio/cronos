@@ -1,22 +1,19 @@
 package org.cronos.server
 
-import akka.actor.ActorSystem
+import akka.actor.{Props, ActorSystem}
 import scala.annotation.tailrec
 
 
-object Main extends App with ConfigCassandraCluster {
-  import Commands._
+object Main extends App with ConfigCassandra {
+  import ConsoleCommands._
   implicit lazy val system = ActorSystem()
+  val commandExecutor =  system.actorOf(Props(new CommandExecutorActor()))
 
   @tailrec
   private def commandLoop(): Unit = {
     Console.readLine() match {
-      case QuitCommand                => return
-//      case ScanCommand(query)         => scan ! query.toString
-//
-//      case ListCommand(count)         => read ! FindAll(count.toInt)
-//      case CountCommand               => read ! CountAll
-      case _                          =>
+      case QuitCommand  => return
+      case x            => commandExecutor ! x
     }
     commandLoop()
   }
@@ -26,12 +23,8 @@ object Main extends App with ConfigCassandraCluster {
   system.shutdown()
 }
 
-object Commands {
-  val QuitCommand  = "quit"
-//  val ListCommand  = "list (\\d+)".r
-//  val CountCommand = "count"
-//  val ScanCommand  = "scan (.*)".r
-
+object ConsoleCommands {
+  val QuitCommand   = "quit"
 }
 
 
