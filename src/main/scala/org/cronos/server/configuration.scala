@@ -5,13 +5,13 @@ import akka.actor.ActorSystem
 import scala.io.Source
 
 
-trait CassandraConfig {
+trait BaseCassandraConfig {
     def cluster:Cluster
     def keyspaceName:String
     def init():Unit
 }
 
-trait ConfigCassandra extends CassandraConfig {
+trait ConfigCassandra extends BaseCassandraConfig {
   def system: ActorSystem
 
   private def config = system.settings.config

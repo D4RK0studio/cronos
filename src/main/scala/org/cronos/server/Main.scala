@@ -2,6 +2,7 @@ package org.cronos.server
 
 import akka.actor.{Props, ActorSystem}
 import scala.annotation.tailrec
+import org.cronos.command.CommandExecutorActor
 
 
 object Main extends App with ConfigCassandra {
