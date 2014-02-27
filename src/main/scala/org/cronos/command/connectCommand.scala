@@ -16,7 +16,7 @@ object ConnectCommand extends ControlCommandType{
 class ConnectActor extends Actor {
 
   override def receive: Actor.Receive = {
-    case query:ConnectCommandQuery => println("Connecting to " + query.application+ "...")
+    case query:ConnectCommandQuery => sender ! "Connecting to " + query.application+ "..."
     case _ => println("ERROR")
   }
 }
