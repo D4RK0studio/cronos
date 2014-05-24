@@ -1,5 +1,6 @@
-object Build extends sbt.Build {
 
+
+object Build extends sbt.Build {
   lazy val root = (Project(id = "cronos", base = file("."))
     aggregate(client, common, commonTest, gui, server, test)
     settings(ScoverageSbtPlugin.instrumentSettings: _*)

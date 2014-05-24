@@ -1,6 +1,3 @@
-import de.johoop.jacoco4sbt._
-import JacocoPlugin._
-
 name := "cronos"
 
 version := "1.0"
@@ -18,5 +15,3 @@ libraryDependencies += "commons-configuration" % "commons-configuration" % "1.9"
 libraryDependencies += "com.fasterxml.uuid" % "java-uuid-generator" % "3.1.3"
 
 mainClass := Some("Main")
-
-jacoco.settings
