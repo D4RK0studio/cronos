@@ -6,7 +6,7 @@ trait Command{
   def env:String
   def name:String
   def validator:Regex
-  def query(q:String):CommandQuery
+
 
 
   override def toString = "[" + env +"] "+ name
@@ -14,12 +14,12 @@ trait Command{
 
 trait ControlCommandType extends Command{
   lazy val env = "CONTROL"
-  def query(q:String):ControlCommandQuery
 }
 trait OperationCommandType extends Command{
   lazy val env = "OPERATION"
-  def query(q:String):OperationCommandQuery
 }
+
+
 
 
 

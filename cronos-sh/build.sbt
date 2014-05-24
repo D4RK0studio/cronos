@@ -1,0 +1,1 @@
+name := "Cronos Shell"

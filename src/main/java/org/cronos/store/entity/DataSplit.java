@@ -3,12 +3,12 @@ package org.cronos.store.entity;
 import java.util.Date;
 
 public class DataSplit {
-    private int orderId;
-    private int totalSplits;
-    private Date minorDate;
-    private Date majorDate;
-    private Group group;
-    private String partition;
+    private final int orderId;
+    private final int totalSplits;
+    private final Date minorDate;
+    private final Date majorDate;
+    private final Group group;
+    private final String partition;
 
     public DataSplit(int orderId, int totalSplits, Date minorDate, Date majorDate, Group group, String partition) {
         this.orderId = orderId;

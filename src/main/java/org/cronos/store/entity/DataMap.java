@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataMap {
-    private DataSplit dataSplit;
-    private List<Record> records;
+    private final DataSplit dataSplit;
+    private final List<Record> records;
 
     public DataMap(DataSplit dataSplit) {
         this.dataSplit = dataSplit;

@@ -21,5 +21,20 @@ public enum DataType {
         }
         return result;
     }
+    public static String getString(DataType dataType){
+        String result= "unknown";
+        switch (dataType){
+            case STRING:
+                result="string";
+                break;
+            case NUMBER:
+                result="number";
+                break;
+            case DECIMAL:
+                result="decimal";
+                break;
+        }
+        return result;
+    }
 
 }

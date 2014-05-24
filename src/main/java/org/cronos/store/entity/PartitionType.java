@@ -28,4 +28,25 @@ public enum PartitionType {
         }
         return result;
     }
+    public static String getString(PartitionType partitionType){
+        String result="unknown";
+        switch (partitionType){
+            case MINUTE:
+                result = "minute";
+                break;
+            case HOUR:
+                result = "hour";
+                break;
+            case DAY:
+                result ="day";
+                break;
+            case MONTH:
+                result = "month";
+                break;
+            case YEAR:
+                result = "year";
+                break;
+        }
+        return result;
+    }
 }

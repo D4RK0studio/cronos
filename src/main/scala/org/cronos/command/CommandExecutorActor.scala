@@ -3,10 +3,10 @@ package org.cronos.command
 import akka.actor.{Props, Actor}
 
 class CommandExecutorActor extends Actor{
-  val connect =  context.actorOf(Props(new ConnectActor()))
+  val create =  context.actorOf(Props(new CreateActor()))
   override def receive: Actor.Receive = {
     case q:String => q match{
-      case ConnectCommand.validator(application) => connect forward ConnectCommand.query(application)
+      case CreateCommand.validator(application,typeData) => create forward CreateCommand.query(application,typeData)
       case _ => println("EXECUTOR ERROR")
     }
   }

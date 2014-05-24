@@ -1,6 +1,7 @@
 package org.cronos.store;
 
 
+import org.apache.commons.configuration.Configuration;
 import org.cronos.store.entity.*;
 
 import java.util.Date;
@@ -8,11 +9,11 @@ import java.util.List;
 
 public interface IStorage {
 
-    public void init(IConfigStorage configStorage);
+    public void init(Configuration configuration);
 
     public OperationResult createApplication(Application application);
-    public OperationResult createGroup(String application, String group);
-    public OperationResult createReceiver(String application, String group, String receiver);
+    public OperationResult createGroup(Group group);
+    public OperationResult createReceiver(Receiver receiver);
 
     public OperationResult add(Record record);
 

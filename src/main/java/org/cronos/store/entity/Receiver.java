@@ -1,8 +1,11 @@
 package org.cronos.store.entity;
 
-public class Receiver {
-    private Group group;
-    private String name;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Receiver implements ICronosComponent {
+    private final Group group;
+    private final String name;
 
     public Receiver(Group group,String name){
         this.group=group;
@@ -13,7 +16,24 @@ public class Receiver {
         return group;
     }
 
+
+    @Override
     public String getName() {
         return name;
     }
+
+    @Override
+    public String getReference() {
+        return this.group.getReference() + "." +this.name;
+    }
+
+    @Override
+    public Map<String, String> getProperties() {
+        Map<String,String> result=new HashMap<>();
+        result.put("name",this.name);
+        result.put("reference",this.getReference());
+        return result;
+    }
+
+
 }

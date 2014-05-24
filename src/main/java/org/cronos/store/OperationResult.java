@@ -1,9 +1,9 @@
 package org.cronos.store;
 
 public class OperationResult {
-    private String name;
-    private int status;
-    private String message;
+    private final String name;
+    private final int status;
+    private final String message;
 
     public OperationResult(String name, int status, String message) {
         this.name = name;
@@ -22,4 +22,6 @@ public class OperationResult {
     public String getMessage() {
         return message;
     }
+
+    public boolean isOK() { return status >0; }
 }

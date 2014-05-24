@@ -1,39 +1,47 @@
 package org.cronos.store.entity;
 
 
-public class Application {
-    private String name;
-    private DataType dataType;
-    private PartitionType partTimeType;
+import java.util.HashMap;
+import java.util.Map;
 
-    public Application(String name, DataType dataType, PartitionType partTimeType){
+public class Application implements ICronosComponent {
+    private final String name;
+    private final DataType dataType;
+    private final PartitionType partitionType;
+
+    public Application(String name, DataType dataType, PartitionType partitionType){
         this.name=name;
         this.dataType=dataType;
-        this.partTimeType=partTimeType;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        this.partitionType=partitionType;
     }
 
     public DataType getDataType() {
         return dataType;
     }
 
-    public void setDataType(DataType dataType) {
-        this.dataType = dataType;
+    public PartitionType getPartitionType() {
+        return partitionType;
     }
 
-    public PartitionType getPartTimeType() {
-        return partTimeType;
+    @Override
+    public String getName() {
+        return name;
     }
 
-    public void setPartTimeType(PartitionType partTimeType) {
-        this.partTimeType = partTimeType;
+    @Override
+    public String getReference() {
+        return name;
     }
+
+    @Override
+    public Map<String, String> getProperties() {
+        Map<String,String> result=new HashMap<>();
+        result.put("name",this.name);
+        result.put("reference",this.getReference());
+        result.put("dataType",DataType.getString(this.dataType));
+        result.put("partitionType",PartitionType.getString(this.partitionType));
+        return result;
+    }
+
 
 }

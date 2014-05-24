@@ -20,7 +20,7 @@ object Main extends App with ConfigCassandra {
   private def commandLoop(): Unit = {
     Console.readLine() match {
       case QuitCommand  => return
-      case x            => ask (commandExecutor, x).mapTo[String].onSuccess{
+      case line            => ask (commandExecutor, line).mapTo[String].onSuccess{
         case y => println(y)
       }
     }

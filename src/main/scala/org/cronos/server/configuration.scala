@@ -35,7 +35,7 @@ trait ConfigCassandra extends BaseCassandraConfig {
   def init() ={
     if(cluster!=null) {
       val session= cluster.connect()
-      val query = Source.fromURL(getClass.getResource("/keyspace.cql")).mkString
+      val query = Source.fromURL(getClass.getResource("/init-configuration.cql")).mkString
         .replace(CassandraConfigReservedWords.KeyspaceName,name)
         .replace(CassandraConfigReservedWords.KeyspaceReplication,replication.toString)
       query.split(";").foreach(session.execute)
